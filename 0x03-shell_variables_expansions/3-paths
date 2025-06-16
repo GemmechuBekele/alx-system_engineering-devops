@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$PATH" | tr ':' '\n' | grep -c '.*'
+echo "$PATH" | awk -F':' '{n=0; for(i=1;i<=NF;i++){if($i!="") n++} print n}'
