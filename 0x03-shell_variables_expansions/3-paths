@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$PATH" | awk -F':' '{n=0; for(i=1;i<=NF;i++){if($i!="") n++} print n}'
+echo "$PATH" | tr ':' '\n' | wc -l
