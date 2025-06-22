@@ -1,0 +1,76 @@
+# 3. Scale Up - Application Server vs Web Server
+
+## 📚 Concept: Application Server vs Web Server
+
+| Feature              | Web Server                      | Application Server                  |
+|----------------------|----------------------------------|-------------------------------------|
+| **Primary Role**     | Handles HTTP requests (static)   | Executes business logic (dynamic)   |
+| **Serves**           | Static content (HTML, CSS, JS)   | Dynamic content (Python, PHP, etc.) |
+| **Example**          | Nginx, Apache                    | Gunicorn, uWSGI, Node.js, Django    |
+| **Interaction**      | Directly with client browsers    | Works behind the web server         |
+| **Common Setup**     | Frontend layer                   | Backend/API processing layer        |
+
+> **Summary:**  
+> The **Web Server** is the entry point for user traffic, serving static files and routing dynamic requests.  
+> The **Application Server** handles backend logic, database communication, and returns responses via the web server.
+
+---
+
+## 🖥️ Infrastructure Overview
+
+This infrastructure adds:
+- 1 new **Application Server**
+- A **clustered HAProxy setup** with 2 load balancers
+- Fully **split components**: Web server, App server, and Database on separate machines
+
+### 🖼️ Architecture Diagram  
+[Click here to view](https://imgur.com/a/VuD4QgS)
+
+---
+
+## 🧩 Components Breakdown
+
+### 🔄 Load Balancers (HAProxy x2)
+- **Purpose:** Distribute traffic across web servers
+- **Clustered Setup:** Load balancer 2 acts as failover for LB1 to ensure high availability
+- **Handles:** SSL termination (HTTPS)
+
+### 🌐 Web Server (Nginx)
+- **Purpose:** Serve static content (HTML/CSS/JS), reverse proxy to the app server
+- **Why:** Lightweight and efficient at handling thousands of concurrent connections
+
+### ⚙️ Application Server (Gunicorn / Django)
+- **Purpose:** Process dynamic requests and execute backend logic
+- **Why:** Decouples business logic from the web tier, enabling scalability
+
+### 🗄️ Database Server (MySQL)
+- **Purpose:** Handle persistent data
+- **Why:** Centralized storage for transactional and relational data
+
+### ➕ New Server Added
+- A dedicated **Application Server** was introduced to separate concerns and improve scalability and performance.
+
+---
+
+## ✅ Why Split Components?
+
+- **Performance:** Specialized servers perform better under load
+- **Scalability:** Easy to scale web, app, or DB servers independently
+- **Fault Isolation:** One layer fails, others continue
+- **Security:** Narrow down the attack surface by segmenting layers
+
+---
+
+## 📁 Project Info
+
+- **GitHub Repository:** `alx-system_engineering-devops`
+- **Directory:** `0x09-web_infrastructure_design`
+- **File:** `3-scale_up`
+
+---
+
+## 🔗 Related Resource
+
+- [Diagram on Imgur](https://imgur.com/a/VuD4QgS)
+
+
