@@ -1,0 +1,66 @@
+A user wants to access the website http://www.foobar.com from their browser.
+
+1. DNS Resolution:
+   - The domain name www.foobar.com is resolved using a DNS A record.
+   - It maps to the IP address of the load balancer (HAProxy).
+
+2. Load Balancer (HAProxy):
+   - Receives incoming traffic from users.
+   - Distributes requests to backend servers using the **Round-Robin** algorithm:
+     - Each request is sent to a different server in rotation (e.g., Server 1, then Server 2, then Server 1 again).
+   - Ensures load is evenly shared between available servers.
+   - This setup is **Active-Active**: both backend servers handle requests at the same time.
+
+   - In contrast, an **Active-Passive** setup would keep one server idle until the active one fails.
+
+3. Server 1 (Web Server):
+   - Runs **Nginx**, which handles HTTP requests and serves static content.
+   - Hosts the **application files** (your website code).
+   - Connects to the **Primary MySQL** database for write operations.
+   - IP: 8.8.8.8
+
+4. Server 2 (Application Server):
+   - Runs the application backend logic (e.g., PHP, Python, Node.js).
+   - Also contains a copy of the application files.
+   - Connects to the **Replica (Read-Only)** MySQL database for SELECT/read operations.
+   - IP: 8.8.4.4
+
+5. MySQL Primary-Replica Cluster:
+   - **Primary (Master)**:
+     - Accepts all write operations (INSERT, UPDATE, DELETE).
+     - Replicates changes to the replica node.
+   - **Replica (Slave)**:
+     - Read-only.
+     - Handles SELECT/read queries to reduce load on the primary.
+
+---
+
+## 🔍 Why Each Component Is Added
+
+- **2 Servers**: Separate roles (web + app) improve fault isolation, flexibility, and performance.
+- **HAProxy Load Balancer**: Prevents overloading one server, improves uptime and traffic distribution.
+- **MySQL Replica**: Reduces load on the master, increases read performance, and provides backup capability.
+
+---
+
+## ❌ Infrastructure Issues
+
+1. **SPOF (Single Point of Failure)**:
+   - If the load balancer fails, users cannot access the backend, even if servers are online.
+
+2. **Security Issues**:
+   - No firewall to filter malicious traffic.
+   - No HTTPS for secure encrypted communication.
+
+3. **No Monitoring**:
+   - No system to check server health, detect failures, or analyze traffic.
+
+---
+
+## 📎 URLs
+
+- GitHub repository: https://github.com/GemmechuBekele/alx-system_engineering-devops.git  
+- Directory: `0x09-web_infrastructure_design`  
+- File: `1-distributed_web_infrastructure`  
+- Diagram: https://imgur.com/a/VuD4QgS
+

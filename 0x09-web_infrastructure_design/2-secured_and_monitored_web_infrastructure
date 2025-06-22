@@ -1,0 +1,22 @@
+Three-Server Secured and Monitored Infrastructure
+
+1. Components:
+   - 1 Load Balancer (HTTPS termination)
+   - 2 Web Servers (Nginx + App Layer + Monitoring Agent)
+   - 1 MySQL DB (with Monitoring Agent)
+   - 3 Firewalls (Internet edge, Web tier, DB tier)
+   - 3 Monitoring Clients (Sumo Logic/Datadog)
+
+2. Security:
+   - HTTPS via SSL on Load Balancer
+   - Internal firewalls for segmentation
+   - Server hardening and secure SSH
+
+3. Monitoring:
+   - Server health, logs, and traffic metrics collected by agents
+   - QPS monitored via MySQL status metrics
+
+4. Limitations:
+   - SSL termination exposes internal traffic unless encrypted
+   - DB is a single point of failure
+   - Monolithic servers reduce scalability and maintainability
