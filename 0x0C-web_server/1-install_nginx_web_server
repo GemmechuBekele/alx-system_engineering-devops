@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script installs Nginx and sets up a "Hello World!" index page
+
+# Install nginx
+apt-get update -y
+apt-get install nginx -y
+
+# Make sure nginx is running (using service instead of systemctl)
+service nginx start
+
+# Replace the default index page with "Hello World!"
+echo "Hello World!" > /var/www/html/index.html
