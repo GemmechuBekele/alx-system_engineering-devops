@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Configures a server with a custom Nginx header X-Served-By
+
+# Install nginx if not installed
+if ! command -v nginx >/dev/null; then
+  apt-get update -y
+  apt-get install nginx -y
+fi
+
+# Set hostname (customize for this server)
+hostnamectl set-hostname 1287648-web-02
+
+# Set custom Nginx header
+echo "add_header X-Served-By \$hostname;" > /etc/nginx/conf.d/custom_headers.conf
+
+# Restart Nginx
+nginx -t && systemctl restart nginx
