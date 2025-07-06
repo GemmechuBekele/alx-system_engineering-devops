@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Script to install and configure HAproxy load balancer with roundrobin to two webservers
+
+# Update and install haproxy if not installed
+if ! command -v haproxy >/dev/null; then
+  apt-get update -y
+  apt-get install -y haproxy
+fi
+
+# Enable HAproxy service to start on boot
+systemctl enable haproxy
+
+# Create HAproxy config file with backend servers
+cat > /etc/haproxy/haproxy.cfg <<EOF
+global
+    log /dev/log    local0
+    log /dev/log    local1 notice
+    daemon
+    maxconn 256
+
+defaults
+    mode http
+    log     global
+    option  httplog
+    option  dontlognull
+    retries 3
+    timeout connect 5000ms
+    timeout client  50000ms
+    timeout server  50000ms
+
+frontend http_front
+    bind *:80
+    default_backend webservers
+
+backend webservers
+    balance roundrobin
+    server web-01 1287648-web-01:80 check
+    server web-02 1287648-web-02:80 check
+EOF
+
+# Restart HAproxy to apply changes
+systemctl restart haproxy
