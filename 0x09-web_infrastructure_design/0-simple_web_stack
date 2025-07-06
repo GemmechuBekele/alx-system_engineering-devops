@@ -1,0 +1,54 @@
+A user wants to access the website http://www.foobar.com from their browser.
+
+1. The browser uses DNS to resolve the domain name www.foobar.com to the IP address 8.8.8.8.
+   - The type of DNS record used is an **A record**, which maps the domain name to the server’s IP address.
+   - The domain name (foobar.com) makes it easier for users to access the website without memorizing the server’s IP.
+
+2. The request is sent over the internet to the server at IP address 8.8.8.8.
+   - A **server** is a computer (physical or virtual) that provides services or resources to other computers (clients). In this case, it is hosting the entire web infrastructure.
+
+3. The server has the following components:
+
+   - **Web Server (Nginx):**
+     - Nginx listens for HTTP/HTTPS requests from the user.
+     - It serves static files like HTML, CSS, JavaScript.
+     - It forwards dynamic requests (like login, data submission) to the application server.
+
+   - **Application Server:**
+     - This is the environment where the actual web application runs (for example, Python, PHP, or Node.js).
+     - It contains the application logic and processes user input, interacts with the database, and returns dynamic content.
+
+   - **Application Files (Code Base):**
+     - These are the actual files that make up the web application, such as scripts, templates, and configuration files.
+     - These files live on the server and are executed by the application server.
+
+   - **Database (MySQL):**
+     - MySQL is a relational database that stores data such as users, messages, and posts.
+     - The application server interacts with the database using SQL queries to read and write data.
+
+4. **Communication:**
+   - The server and the user's browser communicate using the **HTTP or HTTPS protocol**, which operates over **TCP/IP**.
+   - HTTPS encrypts the data using TLS/SSL for secure communication.
+
+---
+
+## 🔍 Infrastructure Issues
+
+1. **SPOF (Single Point of Failure):**
+   - If the single server fails, the entire website becomes unavailable.
+
+2. **Downtime During Maintenance:**
+   - Updating application files or restarting Nginx causes downtime, making the website temporarily inaccessible.
+
+3. **Lack of Scalability:**
+   - A single server cannot handle high traffic. As traffic increases, performance decreases and may lead to crashes.
+
+---
+
+## 🌐 URLs
+
+- GitHub repository: https://github.com/GemmechuBekele/alx-system_engineering-devops.git  
+- Directory: `0x09-web_infrastructure_design`  
+- File: `0-simple_web_stack`  
+- Diagram: https://imgur.com/a/VuD4QgS
+
