@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Script to audit DNS A records for subdomains using dig and awk
+
+# Function to extract and display DNS info
+get_subdomain_info() {
+    local domain=$1
+    local subdomain=$2
+    local fqdn="${subdomain}.${domain}"
+
+    # Use dig to get DNS answer section
+    result=$(dig "$fqdn" | grep -A1 "ANSWER SECTION:" | tail -n1)
+
+    # Extract record type and destination using awk
+    record_type=$(echo "$result" | awk '{print $4}')
+    destination=$(echo "$result" | awk '{print $5}')
+
+    # Display result
+    echo "The subdomain ${subdomain} is a ${record_type} record and points to ${destination}"
+}
+
+# Main logic
+main() {
+    local domain=$1
+    local subdomain=$2
+
+    if [[ -z "$domain" ]]; then
+        echo "Usage: $0 <domain> [subdomain]"
+        exit 1
+    fi
+
+    if [[ -n "$subdomain" ]]; then
+        get_subdomain_info "$domain" "$subdomain"
+    else
+        for sub in www lb-01 web-01 web-02; do
+            get_subdomain_info "$domain" "$sub"
+        done
+    fi
+}
+
+# Call main with input args
+main $@
