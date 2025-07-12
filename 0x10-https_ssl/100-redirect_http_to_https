@@ -1,0 +1,29 @@
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    daemon
+    maxconn 2048
+    tune.ssl.default-dh-param 2048
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+
+# Redirect all HTTP to HTTPS
+frontend http-in
+    bind *:80
+    mode http
+    redirect scheme https code 301 if !{ ssl_fc }
+
+# Handle SSL/HTTPS traffic
+frontend https-in
+    bind *:443 ssl crt /etc/letsencrypt/live/www.gemmechu.tech/fullchain.pem crt /etc/letsencrypt/live/www.gemmechu.tech/privkey.pem
+    mode http
+    default_backend webservers
+
+backend webservers
+    server web-01 127.0.0.1:80 check
