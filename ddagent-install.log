@@ -1,0 +1,131 @@
+[34m
+* Datadog Agent 7 install script v1.39.0
+[0m
+/usr/bin/systemctl
+[34m
+* Installing curl gnupg
+[0m
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Get:2 https://deb.nodesource.com/node_22.x nodistro InRelease [12.1 kB]
+Get:3 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:5 https://deb.nodesource.com/node_22.x nodistro/main amd64 Packages [7349 B]
+Get:6 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1269 kB]
+Get:8 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1009 kB]
+Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main Translation-en [258 kB]
+Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [163 kB]
+Get:11 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1111 kB]
+Get:12 http://security.ubuntu.com/ubuntu noble-security/main Translation-en [178 kB]
+Get:13 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [21.6 kB]
+Get:14 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [873 kB]
+Get:15 http://archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [284 kB]
+Get:16 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [376 kB]
+Get:17 http://security.ubuntu.com/ubuntu noble-security/universe Translation-en [192 kB]
+Get:18 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1533 kB]
+Get:19 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.2 kB]
+Get:20 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1436 kB]
+Get:21 http://archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [330 kB]
+Get:22 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+Get:23 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [33.2 kB]
+Get:24 http://archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [6772 B]
+Get:25 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+Get:26 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7068 B]
+Get:27 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [28.4 kB]
+Get:28 http://archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+Get:29 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+Get:30 http://security.ubuntu.com/ubuntu noble-security/restricted Translation-en [311 kB]
+Get:31 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+Get:32 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+Fetched 9872 kB in 17s (579 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (8.5.0-2ubuntu10.6).
+The following additional packages will be installed:
+  dirmngr gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpgconf gpgsm
+  gpgv keyboxd
+Suggested packages:
+  pinentry-gnome3 tor parcimonie xloadimage gpg-wks-server scdaemon
+The following packages will be upgraded:
+  dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpgconf
+  gpgsm gpgv keyboxd
+11 upgraded, 0 newly installed, 0 to remove and 47 not upgraded.
+Need to get 0 B/2292 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 76385 files and directories currently installed.)
+Preparing to unpack .../0-gpg-wks-client_2.4.4-2ubuntu17.3_amd64.deb ...
+Unpacking gpg-wks-client (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Preparing to unpack .../1-dirmngr_2.4.4-2ubuntu17.3_amd64.deb ...
+Unpacking dirmngr (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Preparing to unpack .../2-gpgsm_2.4.4-2ubuntu17.3_amd64.deb ...
+Unpacking gpgsm (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Preparing to unpack .../3-gnupg-utils_2.4.4-2ubuntu17.3_amd64.deb ...
+Unpacking gnupg-utils (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Preparing to unpack .../4-gpg-agent_2.4.4-2ubuntu17.3_amd64.deb ...
+Unpacking gpg-agent (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Preparing to unpack .../5-gpg_2.4.4-2ubuntu17.3_amd64.deb ...
+Unpacking gpg (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Preparing to unpack .../6-gpgconf_2.4.4-2ubuntu17.3_amd64.deb ...
+Unpacking gpgconf (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Preparing to unpack .../7-gnupg_2.4.4-2ubuntu17.3_all.deb ...
+Unpacking gnupg (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Preparing to unpack .../8-keyboxd_2.4.4-2ubuntu17.3_amd64.deb ...
+Unpacking keyboxd (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Preparing to unpack .../9-gpgv_2.4.4-2ubuntu17.3_amd64.deb ...
+Unpacking gpgv (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Setting up gpgv (2.4.4-2ubuntu17.3) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 76385 files and directories currently installed.)
+Preparing to unpack .../gnupg-l10n_2.4.4-2ubuntu17.3_all.deb ...
+Unpacking gnupg-l10n (2.4.4-2ubuntu17.3) over (2.4.4-2ubuntu17.2) ...
+Setting up gnupg-l10n (2.4.4-2ubuntu17.3) ...
+Setting up gpgconf (2.4.4-2ubuntu17.3) ...
+Setting up gpg (2.4.4-2ubuntu17.3) ...
+Setting up gnupg-utils (2.4.4-2ubuntu17.3) ...
+Setting up gpg-agent (2.4.4-2ubuntu17.3) ...
+Setting up gpgsm (2.4.4-2ubuntu17.3) ...
+Setting up dirmngr (2.4.4-2ubuntu17.3) ...
+Setting up keyboxd (2.4.4-2ubuntu17.3) ...
+Setting up gnupg (2.4.4-2ubuntu17.3) ...
+Setting up gpg-wks-client (2.4.4-2ubuntu17.3) ...
+Processing triggers for install-info (7.1-3build2) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+[34m
+* Installing APT package sources for Datadog
+[0m
+gpg: directory '/root/.gnupg' created
+gpg: /root/.gnupg/trustdb.gpg: trustdb created
+gpg: key E6266D4AC0962C7D: public key "Datadog, Inc. APT key (2023-04-20) (APT key) <package+aptkey@datadoghq.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg: key 0D826EB906462314: public key "Datadog, Inc. APT key (2024-05-15) (APT key) <package+aptkey@datadoghq.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg: key E6266D4AC0962C7D: "Datadog, Inc. APT key (2023-04-20) (APT key) <package+aptkey@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg: key 32637D44F14F620E: public key "Datadog, Inc. Master key (2020-09-08) <package+masterkey@datadoghq.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg: key D3A80E30382E94DE: public key "Datadog, Inc <package@datadoghq.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+Ign:1 https://apt.datadoghq.com stable InRelease
+Get:2 https://apt.datadoghq.com stable Release [26.0 kB]
+Get:3 https://apt.datadoghq.com stable Release.gpg [801 B]
+Get:4 https://apt.datadoghq.com stable/7 all Packages [1184 B]
+Get:5 https://apt.datadoghq.com stable/7 amd64 Packages [106 kB]
+Fetched 134 kB in 4s (34.0 kB/s)
+Reading package lists...
+  [33mInstalling package(s): datadog-agent datadog-signing-keys
+[0m
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  datadog-agent datadog-signing-keys
+0 upgraded, 2 newly installed, 0 to remove and 47 not upgraded.
+Need to get 157 MB of archives.
+After this operation, 721 MB of additional disk space will be used.
+Get:1 https://apt.datadoghq.com stable/7 amd64 datadog-agent amd64 1:7.68.1-1 [157 MB]
