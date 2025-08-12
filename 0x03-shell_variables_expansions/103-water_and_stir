@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "obase=8; $(echo "${#WATER} * 0 + ${#STIR} * 0 + $(printf '%d' "'${WATER:0:1}") + $(printf '%d' "'${STIR:0:1}")" | bc)" | tr '01234567' 'bestchol'
+dc -e "${#WATER}i ${WATER} ${#STIR}i ${STIR} + 8o p" | tr '01234567' 'bestchol'
