@@ -1,3 +1,2 @@
 #!/bin/bash
-result=$(dc -e "${#WATER}i${WATER} ${#STIR}i${STIR} + 8o p")
-echo $result | tr '0-7' 'bestchol'
+dc -e "${#WATER}i${WATER} ${#STIR}i${STIR} + 8o p" | tr '0-7' 'bestchol'
