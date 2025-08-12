@@ -1,2 +1,2 @@
 #!/bin/bash
-dc -e "${#WATER}i${WATER} ${#STIR}i${STIR} + 8o p" | tr '0-7' 'bestchol'
+dc -e "${#WATER}i ${WATER} ${#STIR}i ${STIR} + 8o p" | tr '01234567' 'bestchol'
