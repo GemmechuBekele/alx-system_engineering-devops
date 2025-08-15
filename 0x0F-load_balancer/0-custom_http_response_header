@@ -1,25 +1,16 @@
 #!/usr/bin/env bash
-# Configure Nginx to add `X-Served-By: <hostname>` to HTTP responses on a fresh Ubuntu machine.
+# Configures Nginx to add a custom X-Served-By header with the hostname
 # shellcheck disable=SC2154
-
-set -euo pipefail
-export DEBIAN_FRONTEND=noninteractive
 
 apt-get update -y
 apt-get install -y nginx
 
-systemctl enable nginx || true
-systemctl start nginx || true
+systemctl enable nginx
+systemctl start nginx
 
-cat > /etc/nginx/conf.d/custom_headers.conf <<'CONF'
-add_header X-Served-By $hostname;
+cat > /etc/nginx/conf.d/custom_headers.conf <<CONF
+add_header X-Served-By \$hostname;
 CONF
-
-if grep -q "server_name _;" /etc/nginx/sites-available/default; then
-  if ! grep -q "X-Served-By" /etc/nginx/sites-available/default; then
-    sed -i '/server_name _;/a \    add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
-  fi
-fi
 
 nginx -t
 systemctl reload nginx
